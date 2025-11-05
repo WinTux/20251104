@@ -1,0 +1,35 @@
+﻿<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="text-center mb-4">Datos del producto</h3>
+            <table class="table table-bordered table-striped text-center align-middle shadow">
+                <tbody>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>@ViewBag.prod.Id</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nombre</th>
+                        <td>@ViewBag.prod.Nombre</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Precio</th>
+                        <td>@ViewBag.prod.Precio</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cantidad</th>
+                        <td>@ViewBag.prod.Cantidad</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Imagen</th>
+                        <td>
+                            <img src="~/imagenes/@ViewBag.prod.Foto"
+                                 alt="Imagen del producto"
+                                 height="100" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
