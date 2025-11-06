@@ -1,0 +1,15 @@
+﻿<html>
+    <head>
+        <title>@ViewBag.titulo</title>
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <a asp-controller="Home" asp-action="Index">Home</a> |
+        <a asp-controller="Ejemplo" asp-action="Index">Ejemplo</a> |
+        <a asp-controller="productos" asp-action="Index">Productos</a>
+        <hr />
+        @RenderBody()
+        <br /><br />
+        Copyright 2025 Pepe Perales
+    </body>
+</html>
