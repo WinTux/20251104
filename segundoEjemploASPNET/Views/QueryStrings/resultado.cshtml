@@ -1,0 +1,16 @@
+﻿<h2>Resultados luego de llamar a QueryParam</h2>
+
+<p> El valor del parámetro id es: <strong> @ViewBag.param </strong> </p>
+
+@if (ViewBag.numero1 != null)
+
+{
+    <p>Los valores de numeros son:</p>
+    <ul>
+        <li>@ViewBag.numero1</li>
+        <li>@ViewBag.numero2</li>
+        <li>@ViewBag.numero3</li>
+    </ul>
+    <p>La sumatoria de los numeros es: @(ViewBag.numero1 + ViewBag.numero2 + ViewBag.numero3)</p>
+}
+
