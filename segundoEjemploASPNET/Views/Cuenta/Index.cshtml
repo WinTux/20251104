@@ -1,0 +1,32 @@
+﻿@model segundoEjemploASPNET.Models.CuentaViewModel
+<h3>Registro Desarrollador</h3>
+<form asp-controller="Cuenta" asp-action="Registrar" method="post">
+    <table>
+        <tr>
+            <td>Usuario:</td>
+            <td><input asp-for="Cuenta.Usuario" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" asp-for="Cuenta.Password" /></td>
+        </tr>
+        <tr>
+            <td>Descripción:</td>
+            <td>
+                <textarea cols="20" rows="5" asp-for="Cuenta.Descripcion"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Disponible:</td>
+            <td><input type="checkbox" asp-for="Cuenta.Disponible" /></td>
+        </tr>
+        <tr>
+            <td>Género:</td>
+            <td>
+                <input type="radio" value="F" asp-for="Cuenta.Genero" /> Femenino <br />
+                <input type="radio" value="M" asp-for="Cuenta.Genero" /> Masculino
+            </td>
+        </tr>
+        <!-- Definir lenguajes y cargos -->
+    </table>
+</form>
