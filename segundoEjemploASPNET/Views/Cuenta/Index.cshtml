@@ -27,6 +27,30 @@
                 <input type="radio" value="M" asp-for="Cuenta.Genero" /> Masculino
             </td>
         </tr>
-        <!-- Definir lenguajes y cargos -->
+        <tr>
+            <td>Lenguajes:</td>
+            <td>
+                @for (var i = 0; i < Model.Lenguajes.Count; i++)
+                {
+                    <input type="hidden" asp-for="@Model.Lenguajes[i].Id"/>
+                    <input type="hidden" asp-for="@Model.Lenguajes[i].Nombre" />
+                    <input type="checkbox" asp-for="@Model.Lenguajes[i].estaMarcado" />
+                    <label asp-for="@Model.Lenguajes[i].Id">@Model.Lenguajes[i].Nombre</label>
+                    <br />
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Cargo anterior:</td>
+            <td>
+                <select asp-for="Cuenta.Cargo" asp-items="@Model.Cargos"></select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="hidden" asp-for="Cuenta.Id" />
+                <input type="submit" value="Registrar" />
+            </td>
+        </tr>
     </table>
 </form>
