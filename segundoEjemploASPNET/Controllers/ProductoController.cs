@@ -5,6 +5,10 @@ namespace segundoEjemploASPNET.Controllers
     [Route("productos")] // https://localhost:7135/productos
     public class ProductoController : Controller
     {
+        public ProductoController() { 
+            // Continuar desde acá...
+        }
+   
         [Route("")] // https://localhost:7135/productos
         [Route("index")] // https://localhost:7135/productos/index
         public IActionResult Index()
@@ -54,6 +58,21 @@ namespace segundoEjemploASPNET.Controllers
             ViewBag.productos = productos;
             // Obtener el total mediante linq
             ViewBag.total = productos.Sum(p => p.Precio * p.Cantidad);
+            return View();
+        }
+        [Route("formulario1")] // https://localhost:7135/productos/formulario1
+        public IActionResult Formulario1()
+        {
+            return View("Formulario1", new Models.Producto());
+        }
+        [HttpPost]
+        [Route("Registrar")] // https://localhost:7135/productos/registrar
+        public IActionResult Registrar(Models.Producto producto, IFormFile foto) {
+            if (foto == null || foto.Length == 0)
+                return Content("ARCHIVO NO SELECCIONADO O INVÁLIDO");
+            else { 
+                
+            }
             return View();
         }
     }
