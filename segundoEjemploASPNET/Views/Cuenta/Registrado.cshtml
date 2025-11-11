@@ -1,0 +1,58 @@
+﻿<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Información de cuenta</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <tbody>
+                        <tr>
+                            <th scope="row">ID</th>
+                            <td>@ViewBag.Cuenta.Id</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Usuario</th>
+                            <td>@ViewBag.Cuenta.Usuario</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Password</th>
+                            <td>@ViewBag.Cuenta.Password</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Descripción</th>
+                            <td>@ViewBag.Cuenta.Descripcion</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Disponible</th>
+                            <td>
+                                <span class="badge @(ViewBag.Cuenta.Disponible ? "bg-success" : "bg-secondary")">
+                                    @(ViewBag.Cuenta.Disponible ? "Sí" : "No")
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Género</th>
+                            <td>@ViewBag.Cuenta.Genero</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Cargo</th>
+                            <td>@ViewBag.Cuenta.Cargo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Lenguajes</th>
+                            <td>
+                                <ul class="list-group list-group-flush">
+                                    @foreach (var lenguaje in ViewBag.Cuenta.Lenguajes)
+                                    {
+                                        <li class="list-group-item">@lenguaje</li>
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

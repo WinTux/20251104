@@ -31,8 +31,19 @@ namespace segundoEjemploASPNET.Controllers
             cuentaViewModel.Cargos = new SelectList(listaCargos, "Id", "Nombre");
             return View("Index",cuentaViewModel);
         }
-        public IActionResult Registrar() {
-            return View();
+        [HttpPost]
+        public IActionResult Registrar(CuentaViewModel cuentaViewModel, List<Lenguaje> lenguajes) {
+            cuentaViewModel.Cuenta.Lenguajes = lenguajes.Where(l => l.estaMarcado).Select(l => l.Id).ToList();
+            /*cuentaViewModel.Cuenta.Lenguajes = new List<string>();
+            foreach (var lenguaje in lenguajes)
+            {
+                if (lenguaje.estaMarcado)
+                {
+                    cuentaViewModel.Cuenta.Lenguajes.Add(lenguaje.Id);
+                }
+            }*/
+            ViewBag.Cuenta = cuentaViewModel.Cuenta;
+            return View("Registrado");
         }
     }
 }
