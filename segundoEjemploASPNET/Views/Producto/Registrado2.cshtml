@@ -1,0 +1,35 @@
+﻿<table class="table table-bordered table-striped table-hover mt-4 w-50 mx-auto shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th colspan="2" class="text-center">Detalles del Producto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">ID</th>
+            <td>@ViewBag.producto.Id</td>
+        </tr>
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>@ViewBag.producto.Nombre</td>
+        </tr>
+        <tr>
+            <th scope="row">Precio</th>
+            <td>@ViewBag.producto.Precio.ToString("C")</td> <!-- Muestra el precio con formato moneda -->
+        </tr>
+        <tr>
+            <th scope="row">Foto</th>
+            <td>
+                @foreach(var foto in ViewBag.producto.Fotos)
+                {
+                    <img src="@Url.Content("~/imagenes/" + foto)"
+                         class="img-thumbnail shadow-sm" width="120" alt="Foto del producto" />
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Cantidad</th>
+            <td>@ViewBag.producto.Cantidad</td>
+        </tr>
+    </tbody>
+</table>
