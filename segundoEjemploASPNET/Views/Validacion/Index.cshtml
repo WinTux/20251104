@@ -1,0 +1,56 @@
+﻿@model ejemplo.validacion.Cuenta
+<h3>Página de registro</h3>
+<form asp-controller="Validacion" asp-action="Guardar" method="post">
+    <table>
+        <tr>
+            <td>Ususario:</td>
+            <td>
+                <input asp-for="Usuario"/>
+            </td>
+            <td>
+                <span asp-validation-for="Usuario" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input asp-for="Password" type="password" />
+            </td>
+            <td>
+                <span asp-validation-for="Password" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Edad:</td>
+            <td>
+                <input asp-for="Edad" />
+            </td>
+            <td>
+                <span asp-validation-for="Edad" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input asp-for="email" />
+            </td>
+            <td>
+                <span asp-validation-for="email" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>WEB:</td>
+            <td>
+                <input asp-for="sitioWeb" />
+            </td>
+            <td>
+                <span asp-validation-for="sitioWeb" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input type="submit" value="Registrar" />
+            </td>
+        </tr>
+    </table>
+</form>
