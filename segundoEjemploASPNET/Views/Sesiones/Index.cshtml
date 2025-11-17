@@ -1,0 +1,84 @@
+﻿@using segundoEjemploASPNET.Herramientas;
+
+<div class="container mt-4">
+
+    <h3 class="mb-4 text-primary">Variables de sesión</h3>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Saludo:</strong> @Context.Session.GetString("saludo")</p>
+            <p><strong>Número:</strong> @Context.Session.GetInt32("numero")</p>
+        </div>
+    </div>
+
+    <h3 class="text-primary">Variables de sesión de objetos</h3>
+
+    <!-- Datos del producto -->
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">Datos del producto</h5>
+        </div>
+
+        <div class="card-body">
+            @{
+                Producto prod = ConversorSesiones.ConvertirDesdeJson<Producto>(Context.Session, "producto");
+            }
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Id:</strong> @prod.Id</p>
+                    <p><strong>Nombre:</strong> @prod.Nombre</p>
+                    <p><strong>Precio:</strong> @prod.Precio</p>
+                    <p><strong>Existencias:</strong> @prod.Cantidad</p>
+                </div>
+
+                <div class="col-md-6 text-center">
+                    <strong>Foto:</strong><br />
+                    <img src="~/imagenes/@prod.Foto" class="img-fluid rounded shadow mt-2" width="200" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">Datos de la lista de productos</h5>
+        </div>
+
+        <div class="card-body">
+
+            @{
+                List<Producto> listaProductos = ConversorSesiones.ConvertirDesdeJson<List<Producto>>(Context.Session, "productos");
+            }
+
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Foto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in listaProductos)
+                    {
+                        <tr>
+                            <td>@p.Id</td>
+                            <td>@p.Nombre</td>
+                            <td>@p.Precio</td>
+                            <td>@p.Cantidad</td>
+                            <td>
+                                <img src="~/imagenes/@p.Foto" class="img-thumbnail" style="height: 100px;" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
