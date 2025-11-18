@@ -1,0 +1,34 @@
+﻿<h3>Carrito de compras</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Foto</th>
+    </tr>
+    @foreach (var item in ViewBag.Carrito)
+    {
+        <tr>
+            <td>@item.Producto.Id</td>
+            <td>@item.Producto.Nombre</td>
+            <td>@item.Producto.Precio</td>
+            <td>@item.Cantidad</td>
+            <td>@(item.Producto.Precio * item.Cantidad)</td>
+            <td>
+                <img src="~/imagenes/@item.Producto.Foto" height="100"/>
+            </td>
+         </tr>
+    }
+    <tr>
+        <td colspan="4" align="right"><strong>Total:</strong></td>
+        <td colspan="2">
+            <strong>
+                @ViewBag.Total
+            </strong>
+        </td>
+    </tr>
+</table>
+<br />
+<a asp-controller="Minimarket" asp-action="Index">Seguir comprando</a>
