@@ -1,0 +1,17 @@
+﻿<h3 class="mb-4 text-center">Página de Bienvenida</h3>
+
+<div class="card shadow w-50 mx-auto">
+    <div class="card-body">
+        <h5 class="card-title">
+            Bienvenido(a) @Context.Session.GetString("Username")
+        </h5>
+
+        <p class="card-text">
+            Has iniciado sesión correctamente.
+        </p>
+
+        <a asp-controller="Login" asp-action="Logout" class="btn btn-danger">
+            Cerrar sesión
+        </a>
+    </div>
+</div>
