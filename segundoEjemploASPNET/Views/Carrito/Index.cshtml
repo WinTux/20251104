@@ -1,34 +1,51 @@
-﻿<h3>Carrito de compras</h3>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Subtotal</th>
-        <th>Foto</th>
-    </tr>
-    @foreach (var item in ViewBag.Carrito)
-    {
+﻿<h3 class="mb-4">Carrito de compras</h3>
+
+<table class="table table-striped table-hover table-bordered align-middle">
+    <thead class="table-dark">
         <tr>
-            <td>@item.Producto.Id</td>
-            <td>@item.Producto.Nombre</td>
-            <td>@item.Producto.Precio</td>
-            <td>@item.Cantidad</td>
-            <td>@(item.Producto.Precio * item.Cantidad)</td>
-            <td>
-                <img src="~/imagenes/@item.Producto.Foto" height="100"/>
-            </td>
-         </tr>
-    }
-    <tr>
-        <td colspan="4" align="right"><strong>Total:</strong></td>
-        <td colspan="2">
-            <strong>
-                @ViewBag.Total
-            </strong>
-        </td>
-    </tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Foto</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in ViewBag.Carrito)
+        {
+            <tr>
+                <td>@item.Producto.Id</td>
+                <td>@item.Producto.Nombre</td>
+                <td>$@item.Producto.Precio</td>
+                <td>@item.Cantidad</td>
+                <td>$@(item.Producto.Precio* item.Cantidad)</td>
+                <td>
+                    <img src="~/imagenes/@item.Producto.Foto" class="img-thumbnail" style="height: 100px;" />
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm"
+                       asp-controller="Carrito"
+                       asp-action="Eliminar"
+                       asp-route-id="@item.Producto.Id">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+
+        <tr class="table-secondary">
+            <td colspan="4" class="text-end"><strong>Total:</strong></td>
+            <td colspan="2"><strong>$@ViewBag.Total</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
 </table>
-<br />
-<a asp-controller="Minimarket" asp-action="Index">Seguir comprando</a>
+
+<a class="btn btn-secondary"
+   asp-controller="Minimarket"
+   asp-action="Index">
+    Seguir comprando
+</a>

@@ -29,9 +29,36 @@ namespace segundoEjemploASPNET.Controllers
             else {
                 // El carrito ya existe en la sesión
                 var carrito = ConversorSesiones.ConvertirDesdeJson<List<Item>>(HttpContext.Session, "carrito");
-                // Falta: iterar para verificar si ya existe el producto.
+                int indice = existe(id);
+                if (indice != -1) {
+                    // Sí existe el producto en el carrito, aumentar la cantidad
+                    carrito[indice].Cantidad++;
+                }
+                else { 
+                    // No existe el producto en el carrito, agregarlo
+                    carrito.Add(new Item { Producto = productoModel.GetProductoById(id), Cantidad = 1 });
+                }
+                // Guardar el carrito actualizado en la sesión
+                ConversorSesiones.ConvertirAJson(HttpContext.Session, "carrito", carrito);
             }
-            return View();
+            return RedirectToAction("Index");
+        }
+        [Route("Eliminar/{id}")]
+        public IActionResult Eliminar(string id) {
+            var carrito = ConversorSesiones.ConvertirDesdeJson<List<Item>>(HttpContext.Session, "carrito");
+            int indice = existe(id);
+            carrito.RemoveAt(indice);
+            ConversorSesiones.ConvertirAJson(HttpContext.Session, "carrito", carrito);
+            return RedirectToAction("Index");
+        }
+
+        private int existe(string id)
+        {
+            var carrito = ConversorSesiones.ConvertirDesdeJson<List<Item>>(HttpContext.Session, "carrito");
+            for (int i = 0; i < carrito.Count; i++)
+                if (carrito[i].Producto.Id.Equals(id))
+                    return i;
+            return -1;
         }
     }
 }
