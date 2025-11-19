@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <title>@ViewBag.Titulo</title>
+
+    <!-- Bootstrap local -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                Minimarket
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="AcercaDe" asp-action="Index">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Contacto" asp-action="Index">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CUERPO PRINCIPAL -->
+    <main class="container flex-grow-1 mb-4">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-light text-center py-3 mt-auto border-top">
+        <small>Copyright 2025 © EDUCOMSER S.R.L.</small>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Titulo = "Index";
+    Layout = "~/Views/Shared/_LayoutPrincipalParaAnidamiento.cshtml";
+}
+
+<div class="container mt-4">
+
+    <!-- Navegación con estilo Bootstrap -->
+    <ul class="nav nav-pills mb-4">
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Contacto" asp-action="Contacto1">Contacto 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Contacto" asp-action="Contacto2">Contacto 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Contacto" asp-action="Contacto3">Contacto 3</a>
+        </li>
+    </ul>
+
+    <!-- Contenido de la vista hija -->
+    <div class="mt-3">
+        @RenderBody()
+    </div>
+
+</div>
