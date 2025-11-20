@@ -1,4 +1,7 @@
-﻿namespace segundoEjemploASPNET.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace segundoEjemploASPNET.Models
 {
     public class Producto
     {
@@ -50,4 +53,19 @@ namespace para.sesiones {
             return productos.FirstOrDefault(p => p.Id.Equals(id));// SELECT * FROM productos WHERE Id = id
         }
     }
+}
+namespace para.ddbb {
+    [Table("Productos")]
+    public class Producto
+    {
+        [Key]
+        public string Id { get; set; }
+        public string Nombre { get; set; }
+        public decimal Precio { get; set; }
+        [Column("Foto")]
+        public string Foto { get; set; }
+        public int Cantidad { get; set; }
+        public bool Activo { get; set; }
+    }
+
 }
