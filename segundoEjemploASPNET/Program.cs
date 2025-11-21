@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace segundoEjemploASPNET
 {
     public class Program
@@ -9,7 +11,10 @@ namespace segundoEjemploASPNET
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession();
-
+            builder.Services.AddDbContext<Herramientas.ProductosContext>(options =>
+                options.UseLazyLoadingProxies()
+                .UseSqlServer(builder.Configuration.GetConnectionString("MiConexionSQLserver"))
+            );
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
