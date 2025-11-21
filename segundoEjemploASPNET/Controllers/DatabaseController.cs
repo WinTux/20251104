@@ -25,5 +25,36 @@ namespace segundoEjemploASPNET.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            var producto = db.Productos.FirstOrDefault(p => p.Id.Equals(id));
+            return View(producto);
+        }
+        [HttpPost]
+        public IActionResult Editar(para.ddbb.Producto producto)
+        {
+            var productoOriginal = db.Productos.FirstOrDefault(p => p.Id.Equals(producto.Id));
+            productoOriginal.Nombre = producto.Nombre;
+            productoOriginal.Precio = producto.Precio;
+            productoOriginal.Activo = producto.Activo;
+            productoOriginal.Cantidad = producto.Cantidad;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Eliminar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Eliminar(int id)
+        {
+            var producto = db.Productos.FirstOrDefault(p => p.Id.Equals(id));
+            db.Productos.Remove(producto);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
