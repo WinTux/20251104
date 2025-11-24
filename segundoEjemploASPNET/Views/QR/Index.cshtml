@@ -1,0 +1,21 @@
+﻿<h3 class="mb-4">Generando un código QR en ASP.NET</h3>
+
+<form method="post" asp-controller="QR" asp-action="GenerarQR" class="p-4 border rounded shadow-sm bg-light">
+    <div class="mb-3">
+        <label for="qrText" class="form-label">Texto para el código QR</label>
+        <input id="qrText" name="qrText" class="form-control" placeholder="Ingrese el texto" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        Generar Código QR
+    </button>
+</form>
+
+@if (ViewBag.QRText != null)
+{
+    <div class="mt-4 p-3 border rounded bg-white shadow-sm text-center">
+        <h4 class="mb-3">Código QR Generado:</h4>
+        <codigoqr contenido="@ViewBag.QRText" ancho="200" alto="200" /> <br /><br />
+        <codigobr contenido="@ViewBag.QRText" ancho="800" alto="200" />
+    </div>
+}
